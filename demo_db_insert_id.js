@@ -1,0 +1,17 @@
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+	host: "localhost",
+	user: "sysdb",
+	password: "4ktnbOU2hDLmHsaZ",
+	database: "mydb"
+});
+
+con.connect(function(err){
+	if (err) throw err;
+	var sql = "INSERT INTO customers (name, address) VALUES ('Michelle','Blue Village')";
+	con.query(sql, function (err, result){
+		if(err) throw err;
+		console.log("1 record inserted, ID " + result.insertId);
+	});
+});
